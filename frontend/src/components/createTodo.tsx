@@ -38,50 +38,32 @@ export default function CreateTodo() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-2xl border border-gray-200">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-        Create a Todo
-      </h2>
-
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-1" htmlFor="title">
-          Title
-        </label>
+    <div className="bg-white rounded-lg border border-gray-200 p-6">
+      <div className="space-y-4">
         <input
-          id="title"
           type="text"
-          placeholder="Enter todo title"
+          placeholder="What needs to be done?"
           value={title}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
         />
-      </div>
-
-      <div className="mb-6">
-        <label
-          className="block text-gray-700 font-medium mb-1"
-          htmlFor="description"
-        >
-          Description
-        </label>
+        
         <input
-          id="description"
           type="text"
-          placeholder="Enter description"
+          placeholder="Description (optional)"
           value={description}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setDescription(e.target.value)
-          }
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
         />
+        
+        <button
+          onClick={handleAddTodo}
+          disabled={!title.trim()}
+          className="w-full py-3 bg-gray-800 hover:bg-gray-900 disabled:bg-gray-300 text-white rounded-lg transition-colors"
+        >
+          Add Todo
+        </button>
       </div>
-
-      <button
-        onClick={handleAddTodo}
-        className="w-full py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-lg transition-colors duration-200"
-      >
-        Add Todo
-      </button>
     </div>
   );
 }
